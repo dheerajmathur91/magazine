@@ -1,0 +1,20 @@
+<%= form_for([@article, @article.comments.build]) do |f| %> 
+  <%= f.hidden_field :parent_id, :value => parent_id %>
+  <%= f.hidden_field :article_id, :value => @article.id %>
+  <div class="form-group">
+    <%= f.label :title %>
+    <%= f.text_field :title, class: 'form-control' %>
+  </div>
+ 
+  <div class="form-group">
+    <%= f.label :author %>
+    <%= f.text_field :author, class: 'form-control', required: true %>
+  </div>
+ 
+  <div class="form-group">
+    <%= f.label :body %>
+    <%= f.text_area :body, class: 'form-control', required: true %>
+  </div>
+ 
+  <%= f.submit class: 'btn btn-primary' %>
+<% end %>

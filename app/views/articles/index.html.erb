@@ -1,0 +1,29 @@
+<h1>Listing Articles</h1>
+ 
+<table class="table table-striped">
+  <tr>
+    <th>Title</th>
+    <th>Author</th>
+    <th>Body</th>
+    <th>Actions</th>
+  </tr>
+ 
+  <% @articles.each do |article| %>
+    <tr>
+      <td><%= article.title %></td>
+      <td><%= article.author %></td>
+      <td><%= truncate(article.body, length: 100) %></td>
+      <td>
+        <div class="btn-group btn-group-xs" role="group" aria-label="...">
+          <%= link_to 'Show', article_path(article), :class => "btn btn-default" %>
+          <%= link_to 'Edit', edit_article_path(article), :class => "btn btn-default" %>
+          <%= link_to 'Delete', article_path(article),
+                method: :delete,
+                data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %>
+        </div>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+<%= link_to 'Create New Article', new_article_path, :class => "btn btn-primary" %>
